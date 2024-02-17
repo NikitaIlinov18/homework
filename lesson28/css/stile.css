@@ -1,0 +1,28 @@
+.block-1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: 20px;
+    line-height: 30px;
+    font-style: italic;
+}
+
+.block-2 {
+    text-decoration: line-through;
+}
+
+.block-3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.block-4 {
+    color: #570f9b;
+    text-decoration: overline wavy;
+    line-height: 30px;
+    word-spacing: 30px;
+}
+
+.block-5 {
+    letter-spacing: 5px;
+    text-decoration: underline double;
+}
