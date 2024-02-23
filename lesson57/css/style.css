@@ -1,0 +1,39 @@
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 5rem;
+    padding-top: 5vh;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+}
+
+/* ====================================================== */
+
+
+.wrapper::before,
+.wrapper::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: 3px solid #fff;
+}
+
+.wrapper::after {
+    background: #4461af;
+    transform: translate(50px, 0px);
+}
+
+.wrapper::before {
+    background: rgb(187, 78, 45);
+    transform: translate(-50px, 0px);
+}
