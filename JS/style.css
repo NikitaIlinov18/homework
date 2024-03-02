@@ -1,0 +1,25 @@
+.helloBtn {
+    color: black;
+    background: #866909;
+    height: 300px;
+    width: 200px;
+    border-radius: 80px;
+    transition: .5s;
+
+}
+
+.red {
+    color: azure;
+    background: #b94b4b;
+    height: 300px;
+}
+
+.text {
+    background: #b94b4b;
+    width: 80px;
+    transition: .5s;
+}
+
+.move {
+    transform: translateX(20vh);
+}
