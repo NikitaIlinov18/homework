@@ -10,11 +10,15 @@
     --inputy: #ac907a;
 }
 
-body {
+.body {
     font-family: "Montserrat", "Arial", sans-serif;
     line-height: 1.5;
     background: var(--fonovyy-svetlyy);
     color: var(--nabornyy);
+}
+
+.body--opened-menu {
+    overflow: hidden;
 }
 
 .wrapper {
@@ -63,6 +67,7 @@ body {
 
 .logo-dark {
     max-width: 173px;
+    z-index: 11; 
 }
 
 .header__top {
@@ -75,6 +80,7 @@ body {
     display: flex;
     align-items: end;
     padding-bottom: 7px;
+    font-size: 16px;
 }
 
 .nav__list {
@@ -82,9 +88,8 @@ body {
     justify-content: end;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 4vh 40px;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.5;
     color: var(--nabornyy);
 }
@@ -114,10 +119,66 @@ body {
     opacity: 1;
 }
 
+/* ====================== */
+
+.burger-icon{
+    display: none;
+    width: 50px;
+    height: 50px;
+    z-index: 11;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-icon span {
+    position: relative;
+}
+
+.burger-icon span,
+.burger-icon span::after, 
+.burger-icon span::before {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 100px;
+    background: var(--zagolovochnyy);
+    transition: all .4s;
+}
+
+.burger-icon span::after, 
+.burger-icon span::before {
+    content: '';
+    position: absolute;
+}
+
+.burger-icon span::after{
+    bottom: -8px;
+} 
+
+.burger-icon span::before {
+    top: -8px;
+}
+
+.body--opened-menu .burger-icon span{
+    background: transparent;
+}
+
+.body--opened-menu .burger-icon span::after {
+    bottom: 0px;
+    transform: rotate(-45deg);
+}
+.body--opened-menu .burger-icon span::before {
+    top: 0px;
+    transform: rotate(45deg);
+
+}
+
+/* ====================== */
+
 .header__main {
     display: flex;
     align-items: flex-end;
-    gap: 137px;
+    gap: 30px;
     padding: 50px 0 140px;
 }
 
@@ -209,4 +270,39 @@ body {
 
 .button-sign {
     color: var(--nabornyy);
+}
+
+/* ================================ */
+
+@media (max-width: 900px) {
+    .nav {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: var(--fonovyy);
+        padding: 26vh 15px 30px;
+        font-size: 24px;
+        /* display: none; */
+        transform: translateY(-50%);
+        visibility: hidden;
+        opacity: 0;
+        transition: all .4s;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .body--opened-menu .nav {
+        transform: translateY(0%);
+        visibility: visible;
+        display: block;
+        opacity: 1;
+    }
+
+    .burger-icon {
+        display: flex;
+    }
+    
 }
