@@ -291,6 +291,42 @@
 
 /* ================================ */
 
+.main {}
+
+.about {}
+
+/* .about__inner {
+    display: flex;
+    gap: 53px;
+}
+.about__img img {
+    border-radius: 20px;
+    width: 603px;
+    height: 543px;
+    position: relative;
+}
+
+.about__button-block {
+    position: absolute;
+
+} */
+
+.about__button {
+}
+
+.about__text {}
+
+.about__desc {}
+
+.desc__text {}
+
+.about__sections {}
+
+.about__sections-item {}
+
+.about__sections-text {}
+
+/* ================================ */
 
 .footer {
     background: #ab8261;
@@ -311,6 +347,7 @@
 }
 
 .footer__logo {
+    display: block;
     width: 100%;
 }
 
@@ -434,17 +471,17 @@
     /* =========================================== */
 
     .footer__grid {
-        justify-content: space-between;
+        justify-items: center;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }
 
-    .footer__grid:last-child {
+    .footer__col:last-child {
         grid-column: 1 / -1;
     }
 
     .tel {
-        margin: 30px 0 15px 5vw;
+        margin: 30px 5vw 15px 5vw;
         align-items: center;
     }
 
@@ -483,6 +520,38 @@
 
     .burger-icon {
         display: flex;
+    }
+
+    /* =================================== */
+
+    .footer__grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto); */
+    }
+
+    .footer__socials-icons {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+
+    .footer__nav-list {
+        padding-top: 10px;
+    }
+
+    .footer__nav-list {
+        align-items: center;
+    }
+
+    .footer__info {
+        align-items: center;
+    }
+
+    .tel {
+        margin: 20px 5vw 15px 5vw;
     }
 
 }
