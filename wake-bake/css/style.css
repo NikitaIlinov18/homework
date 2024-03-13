@@ -8,6 +8,10 @@
     --fioletovyy: #704174;
     --disabled: #e1d9e1;
     --inputy: #ac907a;
+    --transition: all .4s;
+
+    --font-family: "Montserrat", sans-serif;
+    --second-family: "Gabriola", sans-serif;
 }
 
 .body {
@@ -21,6 +25,10 @@
     overflow: hidden;
 }
 
+.body--opened-modal {
+    overflow: hidden;
+}
+
 .wrapper {
     min-height: 100%;
     width: 100%;
@@ -31,6 +39,10 @@
 
 .main {
     flex-grow: 1;
+}
+
+.main-about {
+    padding: 140px 0;
 }
 
 .container {
@@ -50,13 +62,134 @@
     line-height: 1.6;
     text-align: center;
     color: var(--nabornyy);
-    transition: all .7s;
+    transition: var(--transition);
 }
 
 .button:hover {
     background: #ff9138;
 }
 
+/* ================================================ */
+
+.modal {
+    position: absolute;
+    
+    inset: 0;
+    background: #0000007c;
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.body--opened-modal .modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__window {
+    position: relative;
+    background: var(--fonovyy-svetlyy);
+    max-width: 428px;
+    border-radius: 20px;
+    padding: 0 60px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal__cancel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.modal__cancel path,
+.modal__cancel rect {
+    transition: var(--transition)
+}
+
+.modal__cancel:hover path,
+.modal__cancel:hover rect {
+    stroke: #AC907A;
+}
+
+.modal__img {
+    margin: -64px auto 15px 12px;
+    max-width: 248px;
+}
+
+.modal__title {
+    font-family: var(--second-family);
+    font-size: 42px;
+    line-height: 0.9;
+    color: var(--zagolovochnyy);
+}
+
+.modal__text {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.modal__form {}
+
+.field {
+    display: block;
+    position: relative;
+}
+
+.field span {
+    position: absolute;
+    font-size: 11px;
+    color: var(--inputy);
+    top: 12px;
+    left: 28px;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.field__input {
+    border: 1px solid var(--inputy);
+    border-radius: 100px;
+    padding: 19px 28px;
+    width: 100%;
+    height: 62px;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.field__input:hover {
+    border-color: var(--akcentnyy);
+}
+
+.field__input::placeholder {
+    color: var(--inputy);
+    transition: var(--transition);
+}
+
+.field__input:hover::placeholder {
+    color: var(--akcentnyy);
+}
+
+.field__input:focus {
+    padding-top: 27px;
+    font-size: 15px;
+}
+
+.field__input:focus + span {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__form button {
+    width: 100%;
+    margin-top: 10px;
+}
 
 /* ================================================ */
 
@@ -115,7 +248,7 @@
     height: 34px;
     border-radius: 50%;
     background: var(--akcentnyy);
-    transition: all .4s;
+    transition: var(--transition);
     opacity: 0;
 }
 
@@ -146,7 +279,7 @@
     height: 3px;
     border-radius: 100px;
     background: var(--zagolovochnyy);
-    transition: all .4s;
+    transition: var(--transition);
 }
 
 .burger-icon span::after,
@@ -291,40 +424,125 @@
 
 /* ================================ */
 
-.main {}
-
-.about {}
-
-/* .about__inner {
-    display: flex;
+.about__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
     gap: 53px;
 }
-.about__img img {
+
+.about__img {
     border-radius: 20px;
-    width: 603px;
-    height: 543px;
+    overflow: hidden;
     position: relative;
 }
 
-.about__button-block {
-    position: absolute;
-
-} */
-
-.about__button {
+.about__img>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
-.about__text {}
+.about__img-control {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 300px;
+    bottom: 4.7%;
+    left: 5%;
+    border-radius: 20px;
+    padding: 15px 20px;
+    background: #957b97e6;
+    color: var(--fonovyy-svetlyy);
+}
 
-.about__desc {}
+.about__img-button {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: var(--fonovyy-svetlyy);
+    box-shadow: 0 4px 20px 0 rgba(184, 148, 126, 0.3);
+    position: relative;
+}
 
-.desc__text {}
+.about__img-button::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    inset: 5px;
+    border: 1px solid var(--akcentnyy-2);
+    opacity: 0;
+    transition: all .3s;
+}
 
-.about__sections {}
+.about__img-button:hover::before {
+    opacity: 1;
+}
 
-.about__sections-item {}
+.about__body {}
 
-.about__sections-text {}
+.about__heading {
+    margin-bottom: 30px;
+}
+
+.about__title {
+    font-family: var(--second-family);
+    font-size: 74px;
+    line-height: .82;
+    color: var(--zagolovochnyy);
+}
+
+.about__text-title {}
+
+.about__text {
+    margin-bottom: 40px;
+}
+
+.about__grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.about__grid-item {
+    border-radius: 20px;
+    padding: 29px 23.5px 29px 24.5px;
+    background: var(--fonovyy);
+    min-height: 130px;
+    ;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.about__grid-img {
+    border: 1px solid var(--nabornyy);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about__grid-text {}
+
+
+
+
+
+
+
+
 
 /* ================================ */
 
@@ -366,7 +584,7 @@
 }
 
 .socials-item path {
-    transition: all .4s;
+    transition: var(--transition);
 }
 
 .socials-item:hover path {
@@ -390,7 +608,7 @@
     height: 34px;
     border-radius: 50%;
     background: var(--akcentnyy);
-    transition: all .4s;
+    transition: var(--transition);
     opacity: 0;
 }
 
@@ -438,7 +656,7 @@
     line-height: 1.6;
     text-transform: uppercase;
     color: var(--fonovyy-svetlyy);
-    transition: all .4s;
+    transition: var(--transition);
 }
 
 .tel:hover a {
@@ -503,7 +721,7 @@
         transform: translateY(-50%);
         visibility: hidden;
         opacity: 0;
-        transition: all .4s;
+        transition: var(--transition);
     }
 
     .nav__list {
