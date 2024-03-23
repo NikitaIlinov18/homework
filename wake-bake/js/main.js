@@ -114,4 +114,65 @@
 
     });
 
+
+    // Slader gallery
+
+    new Swiper('.gallery__slider', {
+
+        spaceBetween: 20,
+        slidesPerView: 1.5,
+
+
+        pagination: {
+            el: '.gallery__pagination',
+            type: 'fraction',
+        },
+
+        navigation: {
+            nextEl: '.gallery__next',
+            prevEl: '.gallery__prev',
+        },
+
+        breakpoints: {
+            // when window width is >= 320px
+            451:{
+                slidesPerView: 2
+            },
+            
+            551:{
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            
+            1051: {
+                slidesPerView: 4,
+                spaceBetween: 32
+            }
+        }
+    });
+
+    // Slader testimonials
+
+    new Swiper('.testimonials__slider', {
+
+        spaceBetween: 0,
+        slidesPerView: 1.2,
+        centeredSlides: true,
+
+        navigation: {
+            nextEl: '.testimonials__next',
+            prevEl: '.testimonials__prev',
+        },
+
+        scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+        },
+        
+        breakpoints: {
+            1101: {
+                slidesPerView: 2.1,
+            }
+        }
+    });
 })()
