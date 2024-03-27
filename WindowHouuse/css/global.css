@@ -1,0 +1,48 @@
+:root {
+    /* --akcentnyy: #ffa55c;
+    --akcentnyy-2: #ceaad0;
+    --fonovyy: #ffe0cb;
+    --fonovyy-svetlyy: #fff9f4;
+    --zagolovochnyy: #1f1711;
+    
+    --fioletovyy: #704174;
+    --disabled: #e1d9e1;
+    --inputy: #ac907a; */
+    --nabornyy: #000;
+    --transition: all .4s;
+
+    --font-family: "Roboto", sans-serif;
+}
+
+.body {
+    font-family: "Roboto", "Arial", sans-serif;
+    line-height: 1.17;
+    background: var(--fonovyy-svetlyy);
+    color: var(--nabornyy);
+}
+
+.wrapper {
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1310px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+}
+
+.header {
+    margin-top: 17px;
+}
+
+.main {
+    flex-grow: 1;
+    height: 2000px;
+    background: #F2F2F2;
+}
+
