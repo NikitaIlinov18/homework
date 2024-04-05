@@ -1,1769 +1,199 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Окна Хаус</title>
-    <link href="css/swiper-bundle.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>Домашняя работа</title>
+    <link rel="shortcut icon" href="src/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Rubik:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
 </head>
 
-<body class="body">
-    <div class="wrapper">
-        <header class="header">
+<body id="body">
+    <div class="overlay" id="overlay"></div>
+    <div class="layout">
+        <div class="burger" id="burger">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M4 18L20 18" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M4 12L20 12" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M4 6L20 6" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
+                </g>
+            </svg>
+        </div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__inner">
+                <div class="logo">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_513_74730)">
+                            <path
+                                d="M46.17 -0.257004H3.83C1.57281 -0.257004 -0.257 1.57281 -0.257 3.83V46.17C-0.257 48.4272 1.57281 50.257 3.83 50.257H46.17C48.4272 50.257 50.257 48.4272 50.257 46.17V3.83C50.257 1.57281 48.4272 -0.257004 46.17 -0.257004Z"
+                                fill="#DAF765" />
+                            <path
+                                d="M24.375 38.4H42.461L27.441 3.1585H20.4355C20.4355 3.1585 6.7895 35.881 1.1945 49.294C2.015 50.0275 3.0945 50.257 3.6945 50.257H8.8445L23.954 13.07L32.0465 32.8285H24.375V38.4Z"
+                                fill="#323843" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_513_74730">
+                                <rect width="50" height="50" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="sidebar__user">
+                    <div class="sidebar__name">Никита Ильинов</div>
+                    <div class="sidebar__text">Счастливый студент</div>
+                </div>
+                <div class="sidebar__tabs">
+                    <div class="sidebar__item">
+                        <button class="sidebar__button active" id="tasks">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <g clip-path="url(#clip0_704_74543)">
+                                    <path
+                                        d="M17.7083 20H2.29167C1.0275 20 0 18.9725 0 17.7083V2.29167C0 1.0275 1.0275 0 2.29167 0H17.7083C18.9725 0 20 1.0275 20 2.29167V17.7083C20 18.9725 18.9725 20 17.7083 20ZM2.29167 1.25C1.7175 1.25 1.25 1.7175 1.25 2.29167V17.7083C1.25 18.2825 1.7175 18.75 2.29167 18.75H17.7083C18.2825 18.75 18.75 18.2825 18.75 17.7083V2.29167C18.75 1.7175 18.2825 1.25 17.7083 1.25H2.29167Z"
+                                        fill="black" />
+                                    <path
+                                        d="M6.04167 13.125C5.88167 13.125 5.72167 13.0642 5.6 12.9417L3.1 10.4417C2.85583 10.1975 2.85583 9.80167 3.1 9.5575L5.6 7.0575C5.84417 6.81333 6.24 6.81333 6.48417 7.0575C6.72833 7.30167 6.72833 7.6975 6.48417 7.94167L4.42583 10L6.48417 12.0583C6.72833 12.3025 6.72833 12.6983 6.48417 12.9425C6.36167 13.0642 6.20167 13.125 6.04167 13.125Z"
+                                        fill="black" />
+                                    <path
+                                        d="M8.95833 14.1667C8.9 14.1667 8.84 14.1583 8.78167 14.1417C8.45083 14.0442 8.26083 13.6967 8.35833 13.3658L10.4417 6.28251C10.5392 5.95084 10.8892 5.76417 11.2175 5.85917C11.5483 5.95667 11.7383 6.30417 11.6408 6.63501L9.5575 13.7183C9.47833 13.9908 9.22833 14.1667 8.95833 14.1667Z"
+                                        fill="black" />
+                                    <path
+                                        d="M13.9583 13.125C13.7983 13.125 13.6383 13.0642 13.5167 12.9417C13.2725 12.6975 13.2725 12.3017 13.5167 12.0575L15.575 9.99916L13.5167 7.94083C13.2725 7.69666 13.2725 7.30083 13.5167 7.05666C13.7608 6.81249 14.1567 6.81249 14.4008 7.05666L16.9008 9.55666C17.145 9.80083 17.145 10.1967 16.9008 10.4408L14.4008 12.9408C14.2783 13.0642 14.1183 13.125 13.9583 13.125Z"
+                                        fill="black" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_704_74543">
+                                        <rect width="20" height="20" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span>Домашние задания</span></button>
+                    </div>
+                    <div class="sidebar__item">
+                        <button class="sidebar__button" id="diplom">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <g clip-path="url(#clip0_704_74553)">
+                                    <path
+                                        d="M23.2628 10.5971C23.7176 10.365 24 9.90375 24 9.39337C24 8.883 23.7176 8.42175 23.2628 8.18962L12.6135 2.75362C12.2291 2.55824 11.7705 2.55787 11.3854 2.75399L0.736875 8.19C0.282375 8.42175 0 8.883 0 9.39337C0 9.90375 0.282375 10.365 0.736875 10.5971L4.89038 12.7177V18.2074C4.89038 19.8154 8.412 21.393 12 21.393C15.5884 21.393 19.1096 19.815 19.1096 18.2074V12.7174L21.4609 11.517V15.8017L20.901 17.2305C20.7409 17.6389 20.7934 18.0994 21.0405 18.4616C21.2876 18.8246 21.6979 19.041 22.1366 19.041C22.5754 19.041 22.9852 18.8246 23.2324 18.462C23.4795 18.099 23.532 17.6385 23.3719 17.2301L22.8124 15.8021V10.827L23.2628 10.5971ZM17.7623 18.1721C17.6198 18.6375 15.3491 20.0419 12 20.0419C8.65088 20.0419 6.38025 18.6375 6.2415 18.2074V12.3037L6.23887 12.3019C6.23812 12.057 6.1065 11.8207 5.87325 11.7019L1.3515 9.39337L12 3.95737L22.6489 9.39337L12 14.8294L5.87325 11.7019C5.54063 11.5331 4.6695 11.6674 4.5 12C4.33012 12.3322 4.55813 12.5479 4.89038 12.7177L11.3857 16.0331C11.5781 16.1314 11.7889 16.1805 12 16.1805C12.2107 16.1805 12.4222 16.1314 12.6146 16.0331L17.7593 13.407L17.7623 18.1721Z"
+                                        fill="black" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_704_74553">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span>Дипломный проект</span></button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+        <div class="content">
             <div class="container">
-                <div class="header__top">
-                    <a class="logo-dark" href="/">
-                        <img src="img/logo/logo-header.svg" alt="Логотип сайта">
-                    </a>
-                    <div class="nav__burger">
-                        <nav class="nav">
-                            <ul class="nav__list">
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        Услуги
-                                    </a>
-                                </li>
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        Продукция
-                                    </a>
-                                </li>
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        О компании
-                                    </a>
-                                </li>
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        Портфолио
-                                    </a>
-                                </li>
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        Вопрос-ответ
-                                    </a>
-                                </li>
-                                <li class="nav__item">
-                                    <a class="nav__link" href="#">
-                                        Контакты
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="block-buttons">
-                            <a class="button-application button" href="#">
-                                <img src="img/icons/ruler.svg" alt="">
-                                Заявка на замер
-                            </a>
-                            <a class="button-calculate button" href="#">
-                                <img src="img/icons/calculator.svg" alt="">
-                                Заказать расчет
-                            </a>
-                        </div>
-                    </div>
-                    <a class="burger-icon" href="#">
-                        <span></span>
-                    </a>
-                </div>
-            </div>
-            <div class="header__main">
-                <div class="container">
-                    <div class="header__inner">
-                        <div class="header__info">
-                            <h2 class="header__info-title">
-                                Окна Хаус -
-                            </h2>
-                            <p class="header__info-text">
-                                Профессиональный подход
-                                к остеклению
-                            </p>
-                            <ul class="header__content-list">
-                                <li class="header__content-item">
-                                    <img src="img/icons/window-like.svg" alt="">
-                                    <p class="header__content-text">
-                                        Современные окна
-                                        и балконные конструкции
-                                        по доступным ценам
-                                    </p>
-                                </li>
-                                <li class="header__content-item">
-                                    <img src="img/icons/hands.svg" alt="">
-                                    <p class="header__content-text">
-                                        Квалифицированный
-                                        подход к решению задач
-                                        любой сложности
-                                    </p>
-                                </li>
-                                <li class="header__content-item">
-                                    <img src="img/icons/docs-like.svg" alt="">
-                                    <p class="header__content-text">
-                                        Гарантия
-                                        высочайшего качества
-                                        нашей продукции
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <form class="header__form">
-                            <h2 class="form__title">
-                                Вызвать замерщика на дом
-                            </h2>
-                            <label class="field">
-                                <input class="field__input" type="text" placeholder="Представьтесь, пожалуйста">
-                            </label>
-                            <label class="field">
-                                <input class="field__input" type="tel" placeholder="Номер телефона">
-                            </label>
-                            <label class="field">
-                                <input class="field__input" type="email" placeholder="E-mail">
-                            </label>
-                            <label class="contact__check-label">
-                                <input class="contact__checkbox" type="checkbox">
-                                <span>
-                                    Согласен на обработку персональных данных
-                                    в соответствии с <a href="#" target="_blank">политикой конфиденциальности</a>
-                                </span>
-                            </label>
-                            <div class="header__form-button">
-                                <button class="button" type="submit">
-                                    Отправить заявку
-                                </button>
-                            </div>
-                            <img class="header-ruler" src="img/icons/ruler-img.svg" alt="">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="main">
-            <section class="service">
-                <div class="container">
-                    <div class="service__title title">
-                        Наши услуги
-                    </div>
-                    <ul class="service__cards-list">
-                        <li class="service__cards-item">
-                            <!-- <div class="service__card-background">
-                                <img src="img/service-card-1.jpg" alt="">
-                            </div> -->
-                            <div class="service__card-info">
-                                <div class="service__card-icon">
-                                    <img src="img/icons/window.svg" alt="">
-                                </div>
-                                <div class="service__card-title">
-                                    Установка пластиковых окон
-                                </div>
-                                <div class="service__card-text">
-                                    Устанавливаем пластиковые окна Rehau от проверенного производителя с гарантией
-                                    качества
-                                </div>
-                            </div>
-                            <a class="service__card-arrow" href="#">
-                                <svg width="40" height="21" viewBox="0 0 40 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.3846 1.75L38 10.75L23.3846 19.75" stroke="white" stroke-width="2" />
-                                    <path d="M0 10.75H37.0256" stroke="white" stroke-width="2" />
-                                </svg>
-                            </a>
+                <div class="content__block" id="tasksBlock">
+                    <div class="content__title">Домашние задания</div>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson1/index.html">Урок 1</a>
                         </li>
-                        <li class="service__cards-item">
-                            <!-- <div class="service__card-background">
-                                <img src="img/service-card-1.jpg" alt="">
-                            </div> -->
-                            <div class="service__card-info">
-                                <div class="service__card-icon">
-                                    <img src="img/icons/window.svg" alt="">
-                                </div>
-                                <div class="service__card-title">
-                                    Установка пластиковых окон
-                                </div>
-                                <div class="service__card-text">
-                                    Устанавливаем пластиковые окна Rehau от проверенного производителя с гарантией
-                                    качества
-                                </div>
-                            </div>
-                            <a class="service__card-arrow" href="#">
-                                <svg width="40" height="21" viewBox="0 0 40 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.3846 1.75L38 10.75L23.3846 19.75" stroke="white" stroke-width="2" />
-                                    <path d="M0 10.75H37.0256" stroke="white" stroke-width="2" />
-                                </svg>
-                            </a>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson8/index.html">Урок 6</a>
                         </li>
-                        <li class="service__cards-item">
-                            <!-- <div class="service__card-background">
-                                <img src="img/service-card-1.jpg" alt="">
-                            </div> -->
-                            <div class="service__card-info">
-                                <div class="service__card-icon">
-                                    <img src="img/icons/window.svg" alt="">
-                                </div>
-                                <div class="service__card-title">
-                                    Установка пластиковых окон
-                                </div>
-                                <div class="service__card-text">
-                                    Устанавливаем пластиковые окна Rehau от проверенного производителя с гарантией
-                                    качества
-                                </div>
-                            </div>
-                            <a class="service__card-arrow" href="#">
-                                <svg width="40" height="21" viewBox="0 0 40 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.3846 1.75L38 10.75L23.3846 19.75" stroke="white" stroke-width="2" />
-                                    <path d="M0 10.75H37.0256" stroke="white" stroke-width="2" />
-                                </svg>
-                            </a>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson9/index.html">Урок 7</a>
                         </li>
-                        <li class="service__cards-item">
-                            <!-- <div class="service__card-background">
-                                <img src="img/service-card-1.jpg" alt="">
-                            </div> -->
-                            <div class="service__card-info">
-                                <div class="service__card-icon">
-                                    <img src="img/icons/window.svg" alt="">
-                                </div>
-                                <div class="service__card-title">
-                                    Установка пластиковых окон
-                                </div>
-                                <div class="service__card-text">
-                                    Устанавливаем пластиковые окна Rehau от проверенного производителя с гарантией
-                                    качества
-                                </div>
-                            </div>
-                            <a class="service__card-arrow" href="#">
-                                <svg width="40" height="21" viewBox="0 0 40 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23.3846 1.75L38 10.75L23.3846 19.75" stroke="white" stroke-width="2" />
-                                    <path d="M0 10.75H37.0256" stroke="white" stroke-width="2" />
-                                </svg>
-                            </a>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson8exercise/index.html">Урок 8 (задание)</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson9/index.html">Урок 9</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson20/index.html">Урок 20</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson28/index.html">Урок 28</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson36/index.html">Урок 36</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson43/index.html">Урок 43</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson51/index.html">Урок 51</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson55/index.html">Урок 54</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson57/index.html">Урок 57</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson58/index.html">Урок 58</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="lesson69/index.html">Урок 69</a>
+                        </li>
+                    </ul>
+                    <ul class="content__list">
+                        <li class="content__list-item">
+                            <a href="wake-bake/index.html">Wake-bake</a>
                         </li>
                     </ul>
                 </div>
-            </section>
-
-            <section class="product">
-                <div class="container">
-                    <div class="product__title title">
-                        Продукция
+                <div class="content__block hidden" id="diplomBlock">
+                    <div class="content__title">Дипломный проект</div>
+                    <div class="content__list-diplom">
+                        <a href="WindowHouuse/index.html">WindowHouse</a>
                     </div>
-                    <ul class="tab-product-controls">
-                        <li class="tab-product-controls__item">
-                            <a class="tab-product-controls__link tab-product-controls__link--active" href="#tab1">
-                                Стандарт
-                            </a>
-                        </li>
-                        <li class="tab-product-controls__item">
-                            <a class="tab-product-controls__link" href="#tab2">
-                                Бизнес
-                            </a>
-                        </li>
-                        <li class="tab-product-controls__item">
-                            <a class="tab-product-controls__link" href="#tab3">
-                                Премиум
-                            </a>
-                        </li>
-                        <li class="tab-product-controls__item">
-                            <a class="tab-product-controls__link" href="#tab4">
-                                Эксклюзив
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-product-content tab-product-content--show" id="tab1">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="tab-product-gallery__slider swiper">
-                            <div class="tab-product-gallery__wrapper swiper-wrapper">
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="tab-product-content" id="tab2">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="tab-product-gallery__slider swiper">
-                            <div class="tab-product-gallery__wrapper swiper-wrapper">
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="tab-product-content" id="tab3">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="tab-product-gallery__slider swiper">
-                            <div class="tab-product-gallery__wrapper swiper-wrapper">
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="tab-product-content" id="tab4">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="tab-product-gallery__slider swiper">
-                            <div class="tab-product-gallery__wrapper swiper-wrapper">
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="tab-product-gallery__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="product__img">
-                                        <img src="img/product/1.png" alt="">
-                                    </div>
-                                    <div class="product-item__info">
-                                        <h4 class="product-item__title">
-                                            Rehau Blitz New 2
-                                        </h4>
-                                        <p class="product-item__text">
-                                            Сохраняют тепло в доме, защищают от шума
-                                            и вписываются в любой интерьер.
-                                            Практичный выбор
-                                        </p>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Системная глубина
-                                            </div>
-                                            <div class="product-item__value">
-                                                60/60 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Ширина стеклопакета
-                                            </div>
-                                            <div class="product-item__value">
-                                                24/31 мм
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Воздушные камеры
-                                            </div>
-                                            <div class="product-item__value">
-                                                3
-                                            </div>
-                                        </div>
-                                        <div class="product-item__parametr">
-                                            <div class="product-item__label">
-                                                Теплосопротивление
-                                            </div>
-                                            <div class="product-item__value">
-                                                0,70 м2С/ВТ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="schtandart-band">
-                <div class="container">
-                    <div class="schtandart-logo">
-                        <img src="img/icons/schtandart/logo.png" alt="">
-                    </div>
-                    <ul class="schtandart-list">
-                        <li class="schtandart-item">
-                            <img src="img/icons/schtandart/box-like.svg" alt="">
-                            <p class="schtandart-text">
-                                Сертифицированный производитель Rehau
-                            </p>
-                        </li>
-                        <li class="schtandart-item">
-                            <img src="img/icons/schtandart/box.svg" alt="">
-                            <p class="schtandart-text">
-                                Инновационный оконный завод
-                            </p>
-                        </li>
-                        <li class="schtandart-item">
-                            <img src="img/icons/schtandart/cup.svg" alt="">
-                            <p class="schtandart-text">
-                                Лидер по переработке профилей Rehau в России
-                            </p>
-                        </li>
-                        <li class="schtandart-item">
-                            <img src="img/icons/schtandart/conveyor.svg" alt="">
-                            <p class="schtandart-text">
-                                Высокотехнологичное автоматизированное оборудование
-                            </p>
-                        </li>
-                        <li class="schtandart-item">
-                            <img src="img/icons/schtandart/windows.svg" alt="">
-                            <p class="schtandart-text">
-                                Широкий ассортимент продукции
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section-button-calculate">
-                <a class="button-calculate button" href="#">
-                    <img src="img/icons/calculator.svg" alt="">
-                    Заказать расчет
-                </a>
-            </section>
-
-            <section class="about-company">
-                <div class="container">
-                    <div class="about-company__title title">
-                        О компании
-                    </div>
-                    <ul class="tab-about-company-controls">
-                        <li class="tab-about-company-controls__item">
-                            <a class="tab-about-company-controls__link tab-about-company-controls__link--active"
-                                href="#tab-about-company1">
-                                Описание
-                            </a>
-                        </li>
-                        <li class="tab-about-company-controls__item">
-                            <a class="tab-about-company-controls__link" href="#tab-about-company2">
-                                Как мы работаем
-                            </a>
-                        </li>
-                        <li class="tab-about-company-controls__item">
-                            <a class="tab-about-company-controls__link" href="#tab-about-company3">
-                                Отзывы
-                            </a>
-                        </li>
-                        <li class="tab-about-company-controls__item">
-                            <a class="tab-about-company-controls__link" href="#tab-about-company4">
-                                Сертификаты
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-about-company-content tab-about-company-content--show" id="tab-about-company1">
-                        <div class="about-company-discription-global-inner">
-                            <div class="about-company-description-inner">
-                                <div class="about-company-description">
-                                    <div class="about-company-logo">
-                                        <img src="img/logo/logo-main.svg" alt="">
-                                    </div>
-                                    <div class="about-company-text">
-                                        Мы помогаем клиентам подбирать решения, учитывая пожежелания к характеристикам
-                                        окна
-                                        и
-                                        его стоимости. Окно - это объект, которым Вы будете пользоваться много лет,
-                                        поэтому
-                                        для
-                                        нас очень важно, чтобы Вы сделали правильный выбор.
-                                    </div>
-                                </div>
-                                <div class="about-company-description-video">
-                                    <video src="video/cake.mp4" controls></video>
-                                </div>
-                            </div>
-                            <ul class="about-company-description-list">
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/workers.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        профессионализм
-                                        <p class="about-company-description-text">
-                                            Бригада профессиональных
-                                            мастеров по монтажу
-                                            и обслуживанию
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/window-like-2.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        Ценообразование
-                                        <p class="about-company-description-text">
-                                            Лучшие цены на рынке
-                                            пластиковых окон
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/contract.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        Мобильность
-                                        <p class="about-company-description-text">
-                                            Заключение договора
-                                            на дому
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/loyalty.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        Лояльность
-                                        <p class="about-company-description-text">
-                                            99% клиентов рекомендуют
-                                            нас своим друзьям
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/speed.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        Скорость
-                                        <p class="about-company-description-text">
-                                            Короткие сроки
-                                            установки изделий
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="about-company-description-item">
-                                    <img src="img/icons/about-company-description/contract-like.svg" alt="">
-                                    <div class="about-company-description-title">
-                                        Служба качества
-                                        <p class="about-company-description-text">
-                                            Безупречное качество
-                                            и контроль изделий ПВХ
-                                        </p>
-                                    </div>
-                                </li>
-
-                            </ul>
-                            <a class="button-application button-application-about button" href="#">
-                                <img src="img/icons/ruler.svg" alt="">
-                                Оформить заявку на замер
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="tab-about-company-content" id="tab-about-company2">
-                        <div class="about-company-our-working__title title">
-                            Как мы работаем
-                        </div>
-                        <ul class="about-company-our-working-list">
-                            <li class="about-company-our-working-item">
-                                <img src="img/icons/our-working/1.svg" alt="">
-                                <div class="about-company-our-working-info">
-                                    <h4 class="about-company-our-working-title">
-                                        Бесплатно приедем
-                                    </h4>
-                                    <p class="about-company-our-working-text">
-                                        Выезжаем бесплатно во все
-                                        города Московской области
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="about-company-our-working-item">
-                                <img src="img/icons/our-working/2.svg" alt="">
-                                <div class="about-company-our-working-info">
-                                    <h4 class="about-company-our-working-title">
-                                        Выезжаем ежедневно
-                                    </h4>
-                                    <p class="about-company-our-working-text">
-                                        С 9 до 21 без выходных
-                                        и праздников
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="about-company-our-working-item">
-                                <img src="img/icons/our-working/3.svg" alt="">
-                                <div class="about-company-our-working-info">
-                                    <h4 class="about-company-our-working-title">
-                                        Образцы с собой
-                                    </h4>
-                                    <p class="about-company-our-working-text">
-                                        Покажем образцы профильных
-                                        систем и материалов отделки
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="about-company-our-working-item">
-                                <img src="img/icons/our-working/4.svg" alt="">
-                                <div class="about-company-our-working-info">
-                                    <h4 class="about-company-our-working-title">
-                                        Стоимость
-                                    </h4>
-                                    <p class="about-company-our-working-text">
-                                        Называем точную стоимость
-                                        заказа на месте
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-about-company-content" id="tab-about-company3">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="tab-about-company__slider swiper">
-                            <div class="tab-about-company__wrapper swiper-wrapper">
-                                <div class="tab-about-company__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="about-company-review-header">
-                                        <div class="about-client">
-                                            <h4 class="client-name">
-                                                Раиса Михайлова
-                                            </h4>
-                                            <h5 class="date-number-contract">
-                                                24.06.2021 Договор №123456
-                                            </h5>
-                                        </div>
-                                        <a class="about-company-review-button button" href="#">
-                                            <svg width="27" height="24" viewBox="0 0 27 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M5 0.75H23.75C25 0.75 26.25 2 26.25 4.5V17C26.25 18.25 25 19.5 23.75 19.5H20C20 19.5 21.25 22 17.5 23.25C18.75 22 16.25 19.5 16.25 19.5H5C2.5 19.5 1.25 18.25 1.25 17V4.5C1.25 2 2.5 0.75 5 0.75V0.75Z"
-                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="22.9256"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M6.25 6.99994H22.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 10.75H13.75" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 14.5H17.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            Оставить отзыв
-                                        </a>
-                                    </div>
-                                    <div class="about-company-review-main">
-                                        Огромное СПАСИБО всей команде Дизайн-Окно! В июне 2021 заказывала переостекление
-                                        + отделка балкона первый раз и так все удачно - быстро, качественно. Все прошло
-                                        отлично, в соответствии с условиями договора. Замерщик приехал как оговорено без
-                                        опозданий, произвел замер лазерным уровнем, все подробно рассказал по профилю и
-                                        комплектующим. Предоплата составила 20%, остаток - по факту. Соотношение
-                                        цена/качество в сравнении с конкурентами. Доставка точно в срок, за 3 дня все
-                                        установили. Итог - красивые окна. Будем зимой проверять на прочность :)
-                                        <br><br>
-                                        Большая благодарность за отлично проведённую работу! Замерщик по вызову пришёл
-                                        быстро, всё хорошо объяснил , окна пришли в соответствии со согласованной датой,
-                                        поднятие в квартиру прошла очень хорошо , монтажники справились со своей работой
-                                        на отлично! Все прошло в позитиве, соотношение цены и качества хорошее. Отличная
-                                        команда! Спасибо!!!
-                                    </div>
-                                </div>
-                                <div class="tab-about-company__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="about-company-review-header">
-                                        <div class="about-client">
-                                            <h4 class="client-name">
-                                                Раиса Михайлова
-                                            </h4>
-                                            <h5 class="date-number-contract">
-                                                24.06.2021 Договор №123456
-                                            </h5>
-                                        </div>
-                                        <a class="about-company-review-button button" href="#">
-                                            <svg width="27" height="24" viewBox="0 0 27 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M5 0.75H23.75C25 0.75 26.25 2 26.25 4.5V17C26.25 18.25 25 19.5 23.75 19.5H20C20 19.5 21.25 22 17.5 23.25C18.75 22 16.25 19.5 16.25 19.5H5C2.5 19.5 1.25 18.25 1.25 17V4.5C1.25 2 2.5 0.75 5 0.75V0.75Z"
-                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="22.9256"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M6.25 6.99994H22.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 10.75H13.75" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 14.5H17.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            Оставить отзыв
-                                        </a>
-                                    </div>
-                                    <div class="about-company-review-main">
-                                        Огромное СПАСИБО всей команде Дизайн-Окно! В июне 2021 заказывала переостекление
-                                        + отделка балкона первый раз и так все удачно - быстро, качественно. Все прошло
-                                        отлично, в соответствии с условиями договора. Замерщик приехал как оговорено без
-                                        опозданий, произвел замер лазерным уровнем, все подробно рассказал по профилю и
-                                        комплектующим. Предоплата составила 20%, остаток - по факту. Соотношение
-                                        цена/качество в сравнении с конкурентами. Доставка точно в срок, за 3 дня все
-                                        установили. Итог - красивые окна. Будем зимой проверять на прочность :)
-                                        <br><br>
-                                        Большая благодарность за отлично проведённую работу! Замерщик по вызову пришёл
-                                        быстро, всё хорошо объяснил , окна пришли в соответствии со согласованной датой,
-                                        поднятие в квартиру прошла очень хорошо , монтажники справились со своей работой
-                                        на отлично! Все прошло в позитиве, соотношение цены и качества хорошее. Отличная
-                                        команда! Спасибо!!!
-                                    </div>
-                                </div>
-                                <div class="tab-about-company__slide swiper-slide" data-fslightbox="gallery">
-                                    <div class="about-company-review-header">
-                                        <div class="about-client">
-                                            <h4 class="client-name">
-                                                Раиса Михайлова
-                                            </h4>
-                                            <h5 class="date-number-contract">
-                                                24.06.2021 Договор №123456
-                                            </h5>
-                                        </div>
-                                        <a class="about-company-review-button button" href="#">
-                                            <svg width="27" height="24" viewBox="0 0 27 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M5 0.75H23.75C25 0.75 26.25 2 26.25 4.5V17C26.25 18.25 25 19.5 23.75 19.5H20C20 19.5 21.25 22 17.5 23.25C18.75 22 16.25 19.5 16.25 19.5H5C2.5 19.5 1.25 18.25 1.25 17V4.5C1.25 2 2.5 0.75 5 0.75V0.75Z"
-                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="22.9256"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M6.25 6.99994H22.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 10.75H13.75" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.25 14.5H17.5" stroke="white" stroke-width="1.5"
-                                                    stroke-miterlimit="22.9256" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            Оставить отзыв
-                                        </a>
-                                    </div>
-                                    <div class="about-company-review-main">
-                                        Огромное СПАСИБО всей команде Дизайн-Окно! В июне 2021 заказывала переостекление
-                                        + отделка балкона первый раз и так все удачно - быстро, качественно. Все прошло
-                                        отлично, в соответствии с условиями договора. Замерщик приехал как оговорено без
-                                        опозданий, произвел замер лазерным уровнем, все подробно рассказал по профилю и
-                                        комплектующим. Предоплата составила 20%, остаток - по факту. Соотношение
-                                        цена/качество в сравнении с конкурентами. Доставка точно в срок, за 3 дня все
-                                        установили. Итог - красивые окна. Будем зимой проверять на прочность :)
-                                        <br><br>
-                                        Большая благодарность за отлично проведённую работу! Замерщик по вызову пришёл
-                                        быстро, всё хорошо объяснил , окна пришли в соответствии со согласованной датой,
-                                        поднятие в квартиру прошла очень хорошо , монтажники справились со своей работой
-                                        на отлично! Все прошло в позитиве, соотношение цены и качества хорошее. Отличная
-                                        команда! Спасибо!!!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="tab-about-company-content" id="tab-about-company4">
-                        <button class="tab-product-gallery__prev" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                        <div class="certificate__slider swiper">
-                            <div class="certificate__wrapper swiper-wrapper">
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/1.jpg">
-                                    <img src="img/content/certificate-gallery/1.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/2.jpg">
-                                    <img src="img/content/certificate-gallery/2.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/3.jpg">
-                                    <img src="img/content/certificate-gallery/3.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/4.jpg">
-                                    <img src="img/content/certificate-gallery/4.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/5.jpg">
-                                    <img src="img/content/certificate-gallery/5.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/1.jpg">
-                                    <img src="img/content/certificate-gallery/1.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/2.jpg">
-                                    <img src="img/content/certificate-gallery/2.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/4.jpg">
-                                    <img src="img/content/certificate-gallery/4.jpg" alt="">
-                                </a>
-                                <a class="certificate__slide swiper-slide" data-fslightbox="gallery"
-                                    href="img/content/certificate-gallery/3.jpg">
-                                    <img src="img/content/certificate-gallery/3.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <button class="tab-product-gallery__next" type="button">
-                            <svg width="22" height="42" viewBox="0 0 22 42" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                                <path d="M0.5 1L20.5 21L0.5 41" stroke="black" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-    </div>
-    </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__inner">
-                <div class="footer__column">
-                    <a class="footer__logo" href="#">
-                        <img src="img/logo/logo-footer.svg" alt="">
-                    </a>
-                    <div class="footer__text">
-                        © ООО “Окна Хаус”, 2011 - 2022
-                    </div>
-                </div>
-                <nav class="nav__footer">
-                    <ul class="footer__nav-list">
-                        <li class="footer__nav-item">
-                            <a class="footer__nav-link" href="#program">
-                                Политика кофиденциальности
-                            </a>
-                        </li>
-                        <li class="footer__nav-item">
-                            <a class="footer__nav-link" href="#gallery">
-                                Пользовательское соглашение
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </footer>
-    </div>
-
-    <div class="modal--application">
-        <div class="modal__window">
-            <a class="modal--application__cancel" href="#">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.75 1.14355L1.25 21.6436M1.25 1.14355L21.75 21.6436" stroke="white" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            <div class="modal--application__title">
-                <h3 class="modal__title">
-                    <div class="modal__img">
-                        <img src="img/icons/ruler.svg" alt="">
-                    </div>
-                    Вызвать замерщика на дом
-                </h3>
-            </div>
-            <form class="modal__form">
-                <label class="modal-field">
-                    <input class="modal-field__input" type="text" placeholder="Ваше имя">
-                </label>
-                <label class="modal-field">
-                    <input class="modal-field__input" type="tel" placeholder="Номер телефона">
-                </label>
-                <label class="modal-field">
-                    <input class="modal-field__input" type="email" placeholder="E-mail">
-                </label>
-                <label class="modal-field__check-label">
-                    <input class="modal-field__checkbox" type="checkbox">
-                    <span>
-                        Я согласен(на) на обработку<a href="#" target="_blank"> персональных данных </a>
-                    </span>
-                </label>
-                <div class="modal--application__button-block">
-                    <button class="modal--application__button" type="submit">
-                        Отправить заявку
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal--calculate">
-        <div class="modal__window">
-            <a class="modal--calculate__cancel" href="#">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.75 1.14355L1.25 21.6436M1.25 1.14355L21.75 21.6436" stroke="white" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            <div class="modal--calculate__title">
-                <h3 class="modal__title">
-                    <div class="modal__img">
-                        <img src="img/icons/calculator.svg" alt="">
-                    </div>
-                    Заказать расчет
-                </h3>
-            </div>
-            <form class="modal__form">
-                <label class="modal-field">
-                    <input class="modal-field__input" type="text" placeholder="Ваше имя">
-                </label>
-                <label class="modal-field">
-                    <input class="modal-field__input" type="tel" placeholder="Номер телефона">
-                </label>
-                <label class="modal-field">
-                    <input class="modal-field__input" type="email" placeholder="E-mail">
-                </label>
-                <label class="modal-field__check-label">
-                    <input class="modal-field__checkbox" type="checkbox">
-                    <span>
-                        Я согласен(на) на обработку<a href="#" target="_blank"> персональных данных </a>
-                    </span>
-                </label>
-                <div class="modal--calculate__button-block">
-                    <button class="modal--calculate__button" type="submit">
-                        Заказать расчет
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal--service">
-        <div class="modal__window">
-            <a class="modal--service__cancel" href="#">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.75 1.14355L1.25 21.6436M1.25 1.14355L21.75 21.6436" stroke="white" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            <div class="modal--service__content">
-                <div class="modal--service__gallery">
-                    <div class="gallery__slider swiper">
-                        <div class="gallery__wrapper swiper-wrapper">
-                            <a class="gallery__slide swiper-slide" data-fslightbox="gallery"
-                                href="img/content/gallery/1.jpg">
-                                <img src="img/content/gallery/1.jpg" alt="">
-                            </a>
-                            <a class="gallery__slide swiper-slide" data-fslightbox="gallery"
-                                href="img/content/gallery/1.jpg">
-                                <img src="img/content/gallery/1.jpg" alt="">
-                            </a>
-                            <a class="gallery__slide swiper-slide" data-fslightbox="gallery"
-                                href="img/content/gallery/1.jpg">
-                                <img src="img/content/gallery/1.jpg" alt="">
-                            </a>
-                            <a class="gallery__slide swiper-slide" data-fslightbox="gallery"
-                                href="img/content/gallery/1.jpg">
-                                <img src="img/content/gallery/1.jpg" alt="">
-                            </a>
+                    <div class="content__decor">
+                        <div class="content__decor-text">Давай проверим, чему ты научился!</div>
+                        <div class="content__decor-img">
+                            <img src="src/decor.png" alt="decor">
                         </div>
                     </div>
                 </div>
-
-                <div class="block-buttons">
-                    <h3 class="modal--service--gallery__title title">
-                        Установка пластиковых окон
-                    </h3>
-                    <p class="modal--service--gallery__text">
-                        Пластиковые окна Rehau
-                        от проверенного производителя с
-                        гарантией качества
-                    </p>
-                    <a class="button-application button" href="#">
-                        <img src="img/icons/ruler.svg" alt="">
-                        Заявка на замер
-                    </a>
-                    <a class="button-calculate button" href="#">
-                        <img src="img/icons/calculator.svg" alt="">
-                        Заказать расчет
-                    </a>
-                </div>
-                <!-- <div class="modal--service__rows2">
-                    <div class="modal--service__item">
-                        <img src="img/icons/modal--service/1.svg" alt="">
-                        <h4 class="modal--service__item-title">
-                            Пластиковые окна
-                        </h4>
-                        <p class="modal--service__item-text">
-                            Использование ламинационных окон, ламинации в массе, 3д-ламинации,
-                            а также покраска окон
-                        </p>
-                    </div>
-                    <div class="modal--service__item">
-                        <img src="img/icons/modal--service/1.svg" alt="">
-                        <h4 class="modal--service__item-title">
-                            Пластиковые окна
-                        </h4>
-                        <p class="modal--service__item-text">
-                            Использование ламинационных окон, ламинации в массе, 3д-ламинации,
-                            а также покраска окон
-                        </p>
-                    </div>
-                    <div class="modal--service__item">
-                        <img src="img/icons/modal--service/1.svg" alt="">
-                        <h4 class="modal--service__item-title">
-                            Пластиковые окна
-                        </h4>
-                        <p class="modal--service__item-text">
-                            Использование ламинационных окон, ламинации в массе, 3д-ламинации,
-                            а также покраска окон
-                        </p>
-                    </div>
-                    <div class="modal--service__item">
-                        <img src="img/icons/modal--service/1.svg" alt="">
-                        <h4 class="modal--service__item-title">
-                            Пластиковые окна
-                        </h4>
-                        <p class="modal--service__item-text">
-                            Использование ламинационных окон, ламинации в массе, 3д-ламинации,
-                            а также покраска окон
-                        </p>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
-
-    <div class="modal--review">
-        <div class="modal__window">
-            <a class="modal--review__cancel" href="#">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.75 1.14355L1.25 21.6436M1.25 1.14355L21.75 21.6436" stroke="black" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            <div class="modal--review__title">
-                <h3 class="modal__title">
-                    <div class="modal__img">
-                        <img src="img/icons/review.png" alt="">
-                    </div>
-                    Добавьте Ваш отзыв
-                </h3>
-            </div>
-            <form class="modal__form">
-                <label class="modal-field modal-field-review">
-                    <input class="modal-field__input" type="text" placeholder="Ваше имя">
-                </label>
-                <label class="modal-field modal-field-review">
-                    <input class="modal-field__input" type="text" placeholder="Номер договора">
-                </label>
-                <label class="modal-field modal-field-review">
-                    <input class="modal-field__input" type="email" placeholder="E-mail">
-                </label>
-                <label class="modal-field modal-field-review">
-                    <input class="modal-field__input" type="text" placeholder="Ваш отзыв">
-                </label>
-                <label class="modal-field__check-label">
-                    <input class="modal-field__checkbox" type="checkbox">
-                    <span>
-                        Я согласен(на) на обработку персональных данных
-                    </span>
-                </label>
-                <div class="modal--review__button-block">
-                    <button class="modal--review__button" type="submit">
-                        Оставить отзыв
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-
-    <script src="js/fslightbox.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/main.js"></script>
-
+    <script src="src/index.js"></script>
 </body>
 
 </html>
